@@ -44,12 +44,13 @@ export default function Input() {
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     console.log(evt);
-    const {  } = evt.target;
-
+    const { value } = evt.target;
+    const UCValue = value.toUpperCase();
+    setInputValue(UCValue);
     /* STEP 4 */
   };
   const reset = () => {
-    /* STEP 5 */
+    setInputValue('');
   };
 
   const style = {
@@ -61,9 +62,9 @@ export default function Input() {
   return (
     <div className='widget-input container'>
       <h2>Input</h2>
-      <div id='output' style={style}></div> {inputValue.toUpperCase()}
+      <div id='output' style={style}>{inputValue}</div> 
       <div>
-        <input id='input' type='text' onChange={changeInput} /> {/* STEP 6 */}
+        <input id='input' type='text' onChange={changeInput} value={inputValue}/> {/* STEP 6 */}
         <button id='resetInput' onClick={reset}>Reset</button>
       </div>
     </div>
